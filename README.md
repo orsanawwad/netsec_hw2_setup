@@ -1,4 +1,4 @@
-# Netsec Assignment 2 Environment Setup
+# Netsec Homework 2 Environment Setup
 
 ## Setup
 
