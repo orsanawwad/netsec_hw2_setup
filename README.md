@@ -34,7 +34,7 @@ public_d
 
 ## Start up configs
 
-For each machine there is a small shell file that is executed on container startup, these can be found in `configs/` folder.
+For each container there is a small shell file that is executed on container startup, these can be found in `configs/` folder.
 
 # Warning
 Note, anything you do on it will be destroyed once the container is stopped, please read more about Docker volumes in order to pass your scripts to the container
