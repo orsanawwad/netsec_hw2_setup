@@ -1,0 +1,85 @@
+version: "2.4"
+services:
+  router_c:
+    container_name: router_c
+    hostname: router_c.local
+    image: netsec
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    networks:
+      c_a:
+        ipv4_address: "172.16.75.2"
+      c_d:
+        ipv4_address: "172.16.38.2"
+      c_b:
+        ipv4_address: "172.16.148.2"
+    volumes:
+      - ${PWD}/configs/c.sh:/opt/startup_config.sh
+    command: bash -c "/opt/startup_config.sh && bash"
+  private_a:
+    container_name: private_a
+    hostname: private_a.local
+    image: netsec
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    networks:
+      c_a:
+        ipv4_address: "172.16.75.3"
+    volumes:
+      - ${PWD}/configs/a.sh:/opt/startup_config.sh
+    command: bash -c "/opt/startup_config.sh && bash"
+  public_d:
+    container_name: public_d
+    hostname: public_d.local
+    image: netsec
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    networks:
+      c_d:
+        ipv4_address: "172.16.38.3"
+    volumes:
+      - ${PWD}/configs/d.sh:/opt/startup_config.sh
+    command: bash -c "/opt/startup_config.sh && bash"
+  dmz_b:
+    container_name: dmz_b
+    hostname: dmz_b.local
+    image: netsec
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    networks:
+      c_b:
+        ipv4_address: "172.16.148.3"
+    volumes:
+      - ${PWD}/configs/b.sh:/opt/startup_config.sh
+    command: bash -c "/opt/startup_config.sh && bash"
+
+networks:
+  c_a:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.75.0/24"
+          gateway: "172.16.75.1"
+  c_d:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.38.0/24"
+          gateway: "172.16.38.1"
+  c_b:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.16.148.0/24"
+          gateway: "172.16.148.1"
