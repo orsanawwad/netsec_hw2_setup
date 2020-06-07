@@ -23,7 +23,7 @@ Exec into each container
 docker exec -it CONTAINER_NAME bash
 ```
 
-Where container name are one of the following
+Where container name can be one of the following:
 
 ```
 private_a
