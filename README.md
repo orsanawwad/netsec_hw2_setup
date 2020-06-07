@@ -37,4 +37,4 @@ public_d
 For each container there is a small shell file that is executed on container startup, these can be found in `configs/` folder.
 
 # Warning
-Note, anything you do on it will be destroyed once the container is stopped, make sure to read more about Docker volumes.
+Anything you do inside these containers will be destroyed once they are stopped, make sure to read more about Docker volumes.
