@@ -11,6 +11,11 @@ Clone
 git clone github.com/orsanawwad/netsec-hw2
 ```
 
+Build Docker image:
+```
+docker build . -t netsec
+```
+
 Run with docker-compose
 
 ```
